@@ -1,0 +1,124 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f0f4f8;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.background-video{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+.background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: transparent;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    border: 1px transparent;
+}
+
+/* Header Styles */
+h1 {
+    font-size: 2.5rem;
+    color: #070bf0;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+label {
+    display: block;
+    font-weight: bold;
+    margin: 15px 0 5px;
+    color: #ab16c9;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+
+/* Button Styles */
+button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #e60c29;
+}
+
+/* Output Area */
+p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #444;
+}
+
+strong {
+    color: #dd15ab;
+}
+
+#your_speech, #translated_speech, #others_speech, #translated_back {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+
+    select {
+        font-size: 0.9rem;
+    }
+}

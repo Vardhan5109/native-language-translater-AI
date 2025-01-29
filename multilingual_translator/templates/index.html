@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual AI Translator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="background-video">
+        <video autoplay muted loop>
+             <source src="/static/background-video.mp4" type="video/mp4">
+             your browers does not support the video tag .
+        </video> 
+    </div>    
+    <div class="container">
+        <h1>Multilingual AI Translator</h1>
+        <form id="translationForm">
+            <label for="source_lang">Your Language:</label>
+            <select id="source_lang" name="source_lang">
+                {% for lang in languages %}
+                <option value="{{ lang }}">{{ lang }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="target_lang">Target Language:</label>
+            <select id="target_lang" name="target_lang">
+                {% for lang in languages %}
+                <option value="{{ lang }}">{{ lang }}</option>
+                {% endfor %}
+            </select>
+        </form>
+
+        <div>
+            <button id="speak_to_user">Speak in Your Language</button>
+            <p><strong>Your Speech:</strong> <span id="your_speech"></span></p>
+            <p><strong>Translated Speech:</strong> <span id="translated_speech"></span></p>
+        </div>
+
+        <div>
+            <button id="speak_to_user_response">Other Person Responds</button>
+            <p><strong>Other's Speech:</strong> <span id="others_speech"></span></p>
+            <p><strong>Translated Back:</strong> <span id="translated_back"></span></p>
+        </div>
+    </div>
+
+    <script>
+        async function handleAction(action) {
+            const form = document.getElementById("translationForm");
+            const formData = new FormData(form);
+            formData.append("action", action);
+
+            const response = await fetch("/", {
+                method: "POST",
+                body: formData,
+            });
+            const data = await response.json();
+
+            if (action === "speak_to_user") {
+                document.getElementById("your_speech").innerText = data.recognized_text || "Error recognizing speech.";
+                document.getElementById("translated_speech").innerText = data.translated_text || "Error translating speech.";
+            } else if (action === "speak_to_user_response") {
+                document.getElementById("others_speech").innerText = data.recognized_text || "Error recognizing speech.";
+                document.getElementById("translated_back").innerText = data.translated_text || "Error translating speech.";
+            }
+        }
+
+        document.getElementById("speak_to_user").addEventListener("click", () => handleAction("speak_to_user"));
+        document.getElementById("speak_to_user_response").addEventListener("click", () => handleAction("speak_to_user_response"));
+    </script>
+</body>
+</html>
