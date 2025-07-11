@@ -1,0 +1,1 @@
+The Multilingual AI Translator is an application designed to bridge language barriers by leveraging artificial intelligence and machine learning. It enables real time speech-to-speech translation across multiple languages, making communication seamless and effective.
